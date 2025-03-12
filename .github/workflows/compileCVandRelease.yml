@@ -1,0 +1,36 @@
+name: Build CV and Release
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - master
+    tags:
+      - "v*"
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: CV_chi-wang.pdf
+      - name: Rename PDF file
+        run: mv resume.pdf CV_chi-wang.pdf
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: CV_chi-wang.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
