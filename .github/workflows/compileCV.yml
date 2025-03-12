@@ -1,4 +1,4 @@
-name: Build CV from LaTeX Code
+name: Build CV Only
 on: [push, pull_request]
 jobs:
   build_latex:
