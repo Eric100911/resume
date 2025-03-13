@@ -21,13 +21,14 @@ jobs:
         with:
           root_file: resume.tex
           latexmk_use_xelatex: true
+      - name: Rename PDF file
+          run: mv resume.pdf CV_chi-wang.pdf
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
           name: PDF
           path: CV_chi-wang.pdf
-      - name: Rename PDF file
-        run: mv resume.pdf CV_chi-wang.pdf
+          tag: ${{ github.ref }}
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
