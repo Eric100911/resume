@@ -30,5 +30,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: CV_chi-wang.pdf
+          tag: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
