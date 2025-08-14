@@ -1,13 +1,8 @@
 name: Build CV and Release
 on:
   push:
-    branches:
-      - master
     tags:
       - "v*"
-  pull_request:
-    branches:
-      - master
 jobs:
   build_latex:
     runs-on: ubuntu-latest
