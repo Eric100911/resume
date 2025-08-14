@@ -31,5 +31,6 @@ jobs:
         with:
           files: CV_chi-wang.pdf
           tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
